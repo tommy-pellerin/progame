@@ -7,7 +7,7 @@
 }
 
 /* navbar */
-nav {
+header {
   display: flex;
   justify-content: space-between;
 }
@@ -18,33 +18,43 @@ h1 {
 
 form {
   align-self: center;
-  border: 2px solid black;
 }
 
 /* searching */
 .searchBox {
+  width: 20rem;
+  height: 2.5rem;
   border: 2px solid black;
   border-radius: 5rem;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
   display: flex;
 }
+.searchBox:focus-within {
+  border-color: red;
+}
 
 .searchIcon {
-  flex: 2fr;
-  width: 2rem;
+  width: 1.5rem;
   height: auto;
   align-self: center;
 }
 
 #search {
-  height: 70%;
-  flex: auto;
+  height: 1.5rem;
+  width: 90%;
   border: none;
   align-self: center;
 }
+#search:focus {
+  outline: none;
+}
 
 /* submit */
+.submitBox {
+  display: none;
+}
+
 /* game card styles */
 .articles {
   display: flex;

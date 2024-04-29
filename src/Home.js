@@ -4,6 +4,7 @@ const Home = (argument = '') => {
     const cleanedArgument = argument.trim().replace(/\s+/g, '-');
 
     const displayResults = (articles) => {
+      
       const resultsContent = articles.map((article) => {
         const platformSlugs = article.platforms.map((platform) => `<p>${platform.platform.slug}</p>`).join("\n");
         const genres = article.genres.map((genre) => genre.slug).join(", ");
@@ -14,6 +15,7 @@ const Home = (argument = '') => {
             </div>
             <h2>${article.name}</h2>
             <h3>${article.released}</h3>
+            <p>Platforms</p>
             ${platformSlugs}
             <p>${article.rating} / 5</p>
             <p>Nombre de vote : ${article.ratings_count}</p>
@@ -35,9 +37,13 @@ const Home = (argument = '') => {
       
       const finalURL = argument ? `${url}&search=${argument}` : `${url}&dates=${today},${limitYear}-12-31&page_size=9`;
       fetch(finalURL)
+      // fetch("./list.json")
         .then((response) => response.json())
         .then((responseData) => {
           displayResults(responseData.results)
+        })
+        .catch((error) => {
+          console.error('Error:', error);
         });
     };
 

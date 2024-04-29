@@ -22,21 +22,29 @@ window.addEventListener('DOMContentLoaded', () => callRoute());
 //Contenu
 console.log("HEllo");
 
-// //Searching from Home page
-// let form = document.getElementById("form")
-// let keyWords = document.getElementById("search")
+window.onload = function() {
+  //Searching from Home page
+  let form = document.querySelector("form")
+  let keyWords = document.getElementById("search")
 
-// // keyWords.addEventListener('input',()=>{
-// //   console.log(keyWords.value);
-// // })
+  if(form && keyWords) {
+    keyWords.addEventListener('input',()=>{
+      console.log(keyWords.value);
+    })
 
-// form.addEventListener('submit', function(event) {
-//   // Prevent the form from submitting normally
-//   event.preventDefault();
-//   keyWordsValue= keyWords.value
-//   if (keyWordsValue){
-//     console.log(keyWordsValue);
-//   };
-//   // Show data on the PageList immediately
-  
-// });
+    form.addEventListener('submit', function(event) {
+      // Prevent the form from submitting normally
+      console.log("Je suis dans listener de form");
+      event.preventDefault();
+      let keyWordsValue = keyWords.value
+      if (keyWordsValue){
+        console.log(keyWordsValue);
+        // Change the URL to call routes.js and then show search results
+        console.log(`#pagelist/${keyWordsValue}`);
+        window.location.hash = `#pagelist/${keyWordsValue}`;
+      };
+    });
+  } else {
+    console.error('Form or keywords field not found');
+  }
+}

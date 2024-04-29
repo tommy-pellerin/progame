@@ -47,6 +47,7 @@ const PageDetail = (argument) => {
 
     const fetchGame = (url, argument) => {
       fetch(`${url}/${argument}?key=${process.env.API_KEY}`)
+      // fetch(`detail.json`)
         .then((response) => response.json())
         .then((responseData) => {
           displayGame(responseData);
