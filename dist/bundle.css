@@ -1,0 +1,74 @@
+/*!****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/.pnpm/css-loader@7.1.1_webpack@5.91.0_webpack-cli@5.1.4_/node_modules/css-loader/dist/cjs.js!./node_modules/.pnpm/postcss-loader@8.1.1_postcss@8.4.38_webpack@5.91.0_webpack-cli@5.1.4_/node_modules/postcss-loader/dist/cjs.js!./node_modules/.pnpm/sass-loader@14.2.1_sass@1.75.0_webpack@5.91.0_webpack-cli@5.1.4_/node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/style/index.scss ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+.container {
+  width: 80vw;
+  margin: 0 auto;
+}
+
+/* navbar */
+nav {
+  display: flex;
+  justify-content: space-between;
+}
+
+h1 {
+  font-size: 4rem;
+}
+
+form {
+  align-self: center;
+  border: 2px solid black;
+}
+
+/* searching */
+.searchBox {
+  border: 2px solid black;
+  border-radius: 5rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  display: flex;
+}
+
+.searchIcon {
+  flex: 2fr;
+  width: 2rem;
+  height: auto;
+  align-self: center;
+}
+
+#search {
+  height: 70%;
+  flex: auto;
+  border: none;
+  align-self: center;
+}
+
+/* submit */
+/* game card styles */
+.articles {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.cardGame {
+  flex: 20rem;
+  border: 2px solid grey;
+  width: 20rem;
+}
+
+.poster {
+  height: 15rem;
+  width: auto;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+}
+
+.movieBody {
+  margin: 1rem;
+}
+
+/* Show more button */

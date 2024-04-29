@@ -1,0 +1,76 @@
+.container{
+  width:80vw;
+  margin: 0 auto;
+}
+
+/* navbar */
+nav{
+  display:flex;
+  justify-content: space-between;
+}
+
+h1{
+  font-size: 4rem;
+}
+
+form{
+  align-self: center;
+  border: 2px solid black;
+  // padding:10px;
+}
+
+/* searching */
+.searchBox{
+  // height: 2.5rem;
+  border: 2px solid black;
+  border-radius: 5rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  display: flex;
+}
+
+.searchIcon{
+  flex: 2fr;
+  width: 2rem;
+  height: auto;
+  align-self: center;
+}
+
+#search{
+  height: 70%;
+  flex: auto;
+  border: none;
+  align-self: center;
+}
+
+
+/* submit */
+// .submitBox{
+//   margin-top: 10px;
+// }
+
+/* game card styles */
+.articles{
+  display:flex;
+  flex-wrap: wrap;
+}
+.cardGame{
+  flex: 20rem;
+  border: 2px solid grey;
+  width: 20rem;
+}
+.poster{
+  height: 15rem;
+  width: auto;
+}
+img{
+  width: 100%;
+  height: 100%;
+}
+.movieBody{
+  margin: 1rem;
+}
+/* Show more button */
+// #showMore{
+//   align-self: center;
+// }
