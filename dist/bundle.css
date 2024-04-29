@@ -82,3 +82,6 @@ img {
 }
 
 /* Show more button */
+#showMore {
+  display: none;
+}
