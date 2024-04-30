@@ -1,6 +1,74 @@
 /*!****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/.pnpm/css-loader@7.1.1_webpack@5.91.0_webpack-cli@5.1.4_/node_modules/css-loader/dist/cjs.js!./node_modules/.pnpm/postcss-loader@8.1.1_postcss@8.4.38_webpack@5.91.0_webpack-cli@5.1.4_/node_modules/postcss-loader/dist/cjs.js!./node_modules/.pnpm/sass-loader@14.2.1_sass@1.75.0_webpack@5.91.0_webpack-cli@5.1.4_/node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/style/index.scss ***!
   \****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+.platformplaystation {
+  width: 24px;
+  height: 20px;
+  background-repeat: no-repeat;
+  object-fit: cover;
+  margin: 10px;
+  background-image: url(efe97f94b8021d7ce5e8.svg);
+}
+
+.platformxbox {
+  width: 24px;
+  height: 20px;
+  background-repeat: no-repeat;
+  object-fit: cover;
+  margin: 10px;
+  background-image: url(c44b5578fcccee020fd9.svg);
+}
+
+.platformpc {
+  width: 24px;
+  height: 20px;
+  background-repeat: no-repeat;
+  object-fit: cover;
+  margin: 10px;
+  background-image: url(65e5f871b7c679c57ad2.svg);
+}
+
+.platformlinux {
+  width: 24px;
+  height: 20px;
+  background-repeat: no-repeat;
+  object-fit: cover;
+  margin: 10px;
+  background-image: url(9a317a7739e9a5267703.svg);
+}
+
+.platformmac {
+  width: 24px;
+  height: 20px;
+  background-repeat: no-repeat;
+  object-fit: cover;
+  margin: 10px;
+  background-image: url(1aa15eb6e63595f0c01e.svg);
+}
+
+.platformandroid {
+  width: 24px;
+  height: 20px;
+  background-repeat: no-repeat;
+  object-fit: cover;
+  margin: 10px;
+  background-image: url(1aa15eb6e63595f0c01e.svg);
+}
+
+.platformnintendo {
+  width: 24px;
+  height: 20px;
+  background-repeat: no-repeat;
+  object-fit: cover;
+  margin: 10px;
+  background-image: url(96438e0fb90b0c002205.svg);
+}
+
+body {
+  background-color: black;
+  color: white;
+}
+
 .container {
   width: 80vw;
   margin: 0 auto;
@@ -14,6 +82,7 @@ header {
 
 h1 {
   font-size: 4rem;
+  color: rgb(210, 10, 50);
 }
 
 form {
@@ -24,7 +93,7 @@ form {
 .searchBox {
   width: 20rem;
   height: 2.5rem;
-  border: 2px solid black;
+  border: 2px solid white;
   border-radius: 5rem;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
@@ -45,6 +114,8 @@ form {
   width: 90%;
   border: none;
   align-self: center;
+  color: white;
+  background-color: black;
 }
 #search:focus {
   outline: none;
@@ -56,15 +127,25 @@ form {
 }
 
 /* game card styles */
+#pageContent {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
 .articles {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-around;
 }
 
 .cardGame {
   flex: 20rem;
-  border: 2px solid grey;
+  background-color: rgb(35, 35, 35);
   width: 20rem;
+  border-radius: 2%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin: 1rem;
+  overflow: hidden;
 }
 
 .poster {
@@ -77,11 +158,28 @@ img {
   height: 100%;
 }
 
-.movieBody {
+.cardBody {
   margin: 1rem;
 }
 
-/* Show more button */
-#showMore {
+.platform {
+  display: flex;
+}
+
+.moreInfo {
   display: none;
+}
+
+/* Show more button */
+.showmoreBox {
+  display: flex;
+  justify-content: center;
+}
+
+#showMore {
+  background-color: rgb(210, 10, 50);
+  color: white;
+  display: none;
+  font-size: 1.5rem;
+  padding: 0.5rem 2rem;
 }

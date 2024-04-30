@@ -9,21 +9,33 @@ const Home = (argument = '') => {
     const displayResults = (articles, nextPageURL) => {
       // console.log(nextPageURL);
       const resultsContent = articles.map((article) => {
-        const platformSlugs = article.platforms.map((platform) => `<p>${platform.platform.slug}</p>`).join("\n");
+        const platformSlugs = article.parent_platforms.map((platform) => `<div class="platform${platform.platform.slug}"></div>`).join(' ');
         const genres = article.genres.map((genre) => genre.slug).join(", ");
         return `
           <article class="cardGame">
             <div class="poster">
               <img src="${article.background_image}" alt="poster" />
             </div>
-            <h2>${article.name}</h2>
-            <h3>${article.released}</h3>
-            <p>Platforms</p>
-            ${platformSlugs}
-            <p>${article.rating} / 5</p>
-            <p>Nombre de vote : ${article.ratings_count}</p>
-            <p>${genres}</p>
-            <a href="#pagedetail/${article.id}">${article.id}</a>
+            <div class="cardBody">
+              <h2>${article.name}</h2>
+              <div class="platform">
+                ${platformSlugs}
+              </div>
+              <ul class="moreInfo">
+                <li>
+                  <p>${article.rating} / 5</p>
+                  <p>Nombre de vote : ${article.ratings_count}</p>
+                </li>
+                <li>
+                  <h3>${article.released}</h3>
+                </li>
+                <li>
+                </li>
+                  <p>${genres}</p>
+              </ul>     
+              
+              <a href="#pagedetail/${article.id}">${article.id}</a>
+            </div>
           </article>`;
       });
       const resultsContainer = document.querySelector('.page-list .articles');
@@ -40,9 +52,10 @@ const Home = (argument = '') => {
         });
       }
     };
-
+    let storedData = null; // This variable will store the fetched data
     let currentPage = 1; // Keep track of the current page
     const fetchList = (url, argument, page) => {
+      
       let date = new Date();
       let currentYear = date.getFullYear();
       let month = (date.getMonth() + 1).toString().padStart(2, '0');
@@ -52,11 +65,10 @@ const Home = (argument = '') => {
       
       const finalURL = argument ? `${url}&search=${argument}` : `${url}&dates=${today},${limitYear}-12-31&page=${page}&page_size=9`;
       fetch(finalURL)
-      // fetch("./list.json")
         .then((response) => response.json())
         .then((responseData) => {
-          
-          displayResults(responseData.results,responseData.next)
+          storedData = responseData; // Store the fetched data
+          displayResults(storedData.results,storedData.next)
           
           // Check to hide the "Show more" button after new results have been fetched
           if (!responseData.next || currentPage >= 3) {
