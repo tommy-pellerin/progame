@@ -195,3 +195,7 @@ img {
   font-size: 1.5rem;
   padding: 0.5rem 2rem;
 }
+#showMore:hover {
+  background-color: rgb(207, 73, 100);
+  cursor: pointer;
+}
