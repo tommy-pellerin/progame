@@ -17,7 +17,8 @@ const Home = (argument = '') => {
               <img src="${article.background_image}" alt="poster" />
             </div>
             <div class="cardBody">
-              <h2>${article.name}</h2>
+              <a class="smallTitle" href="#pagedetail/${article.id}">${article.name}</a>
+              
               <div class="platform">
                 ${platformSlugs}
               </div>
@@ -34,7 +35,7 @@ const Home = (argument = '') => {
                   <p>${genres}</p>
               </ul>     
               
-              <a href="#pagedetail/${article.id}">${article.id}</a>
+              
             </div>
           </article>`;
       });

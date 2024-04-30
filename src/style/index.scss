@@ -79,16 +79,11 @@ form{
     border-color: red;
   }
 }
-
 .searchIcon{
-  // flex: 2fr;
-  width: 1.5rem;
-  height: auto;
-  align-self: center;
+  @include platform-logo;
+  background-image: url('../assets/images/logos/search.svg'); 
 }
-
 #search{
-  
   height: 1.5rem;
   width: 90%;
   // flex: auto;
@@ -100,8 +95,6 @@ form{
     outline: none;
   }
 }
-
-
 /* submit */
 .submitBox{
   display: none;
@@ -112,12 +105,10 @@ form{
   margin-top: 2rem;
   margin-bottom: 2rem;
 }
-
 .articles{
   display:flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  
 }
 .cardGame{
   flex: 20rem;
@@ -139,9 +130,16 @@ img{
 .cardBody{
   margin: 1rem;
 }
+.smallTitle{
+  font-size: $smallTitleFontSize;
+  color: $textColor;
+  text-decoration: none;
+  &:hover{
+    color: grey;
+  }
+}
 .platform{
   display:flex;
-
 }
 .moreInfo{
   display: none;

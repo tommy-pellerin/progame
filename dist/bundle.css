@@ -104,9 +104,12 @@ form {
 }
 
 .searchIcon {
-  width: 1.5rem;
-  height: auto;
-  align-self: center;
+  width: 24px;
+  height: 20px;
+  background-repeat: no-repeat;
+  object-fit: cover;
+  margin: 10px;
+  background-image: url(48aa76f4f39e7a082a9b.svg);
 }
 
 #search {
@@ -160,6 +163,15 @@ img {
 
 .cardBody {
   margin: 1rem;
+}
+
+.smallTitle {
+  font-size: 1.5rem;
+  color: white;
+  text-decoration: none;
+}
+.smallTitle:hover {
+  color: grey;
 }
 
 .platform {
