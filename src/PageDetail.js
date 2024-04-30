@@ -6,7 +6,7 @@ const PageDetail = (argument) => {
     const displayGame = (gameData) => {
       welcome.innerHTML = ''; //delete welcom content
 
-      const { name, released, description, background_image, website, rating, parent_platforms, stores, developers, genres, tags, publishers, } = gameData;
+      const { name, released, description, background_image, website, rating, platforms, stores, developers, genres, tags, publishers, ratings_count} = gameData;
       const articleDOM = document.querySelector(".page-detail .article");
       if (background_image) {
         // Create a new img element
@@ -26,18 +26,17 @@ const PageDetail = (argument) => {
         let div = document.querySelector('div.principalImage');
         div.appendChild(divElement);
       };
+      articleDOM.querySelector("a.webSite").setAttribute('href', website);
 
       articleDOM.querySelector("h1.title").innerHTML = name;
       articleDOM.querySelector("p.averageNote span").innerHTML = rating;
-      // articleDOM.querySelector("p.numberOfNote span").innerHTML = ratings_count;
+      articleDOM.querySelector("p.numberOfNote span").innerHTML = ratings_count;
       
       articleDOM.querySelector("p.description").innerHTML += description;
 
       articleDOM.querySelector("p.release-date span").innerHTML = released;
 
-      articleDOM.querySelector("p.webSite span").innerHTML = website;
-
-      const platformNames = parent_platforms.map(platform => platform.platform.name);
+      const platformNames = platforms.map(platform => platform.platform.name);
       articleDOM.querySelector("p.platforms span").innerHTML = platformNames.join(", ");
       
       const developersNames = developers.map((developer) => developer.name);
@@ -84,38 +83,39 @@ const PageDetail = (argument) => {
       <section class="page-detail">
         <div class="article">
           <div class="principalImage"></div>
+          <a class="webSite" href="">Check Website</a>
+
           <div class="titleAndNote">
             <h1 class="title"></h1>
             <div class="notes">
-              <p class="averageNote"><span></span>/5</p>
-              <p class="numberOfNote"><span></span> - votes</p>
+              <p class="averageNote"><span></span>/5&nbsp;</p>
+              <p class="numberOfNote">-&nbsp;<span></span>&nbsp;votes</p>
             </div>
           </div>
           
-          <p class="description">Plot </br></p>
+          <p class="description"><strong>Plot</strong> </br></p>
           <div class="dateDevPlatformPublisher">
-            <p class="release-date">Release date : </br><span></span></p>
-            <p class="developer">Developer : </br><span></span></p>
-            <p class="platforms">Platforms : </br><span></span></p>
-            <p class="publisher">Publisher : </br><span></span></p>
+            <p class="release-date"><strong>Release date</strong> </br><span></span></p>
+            <p class="developer"><strong>Developer</strong> </br><span></span></p>
+            <p class="platforms"><strong>Platforms</strong> </br><span></span></p>
+            <p class="publisher"><strong>Publisher</strong> </br><span></span></p>
           </div>
           <div class="genreTags">
-            <p class="genre">Genre : </br><span></span></p>
-            <p class="tags">Tags : </br><span></span></p>
+            <p class="genre"><strong>Genre</strong> </br><span></span></p>
+            <p class="tags"><strong>Tags</strong> </br><span></span></p>
           </div>
           
-          <p class="webSite">Website : </br><span></span></p>
 
           <div class="stores">
-            <h3>BUY</h3>
+            <p class="redTitle">BUY</p>
             <div class="storeBody"></div>
           </div>
           <div class="video">
-            <h3>TRAILER</h3>
+            <p class="redTitle">TRAILER</p>
             <video src=""></video>
           </div>
           <div class="screenShots">
-            <h3>SCREENSHOTS</h3>
+            <p class="redTitle">SCREENSHOTS</p>
           </div>
 
         </div>

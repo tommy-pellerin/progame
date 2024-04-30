@@ -65,13 +65,20 @@
 }
 
 body {
-  background-color: black;
+  background-color: rgb(19, 19, 19);
   color: white;
 }
 
 .container {
   width: 80vw;
   margin: 0 auto;
+}
+
+.redTitle {
+  color: rgb(210, 10, 50);
+  font-size: 3rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 /* navbar */
@@ -81,8 +88,10 @@ header {
 }
 
 h1 {
-  font-size: 4rem;
-  color: rgb(210, 10, 50);
+  font-size: 3rem;
+  color: white;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 form {
@@ -100,7 +109,7 @@ form {
   display: flex;
 }
 .searchBox:focus-within {
-  border-color: red;
+  border-color: rgb(207, 73, 100);
 }
 
 .searchIcon {
@@ -118,7 +127,7 @@ form {
   border: none;
   align-self: center;
   color: white;
-  background-color: black;
+  background-color: rgb(19, 19, 19);
 }
 #search:focus {
   outline: none;
@@ -211,6 +220,24 @@ img {
 }
 
 /*details page*/
+.webSite {
+  display: inline-block;
+  padding: 10px 20px;
+  color: white;
+  background-color: rgb(210, 10, 50);
+  border: none;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  font-size: 16px;
+  position: relative;
+  top: -4rem;
+  left: 1rem;
+}
+.webSite:hover {
+  background-color: rgb(207, 73, 100);
+}
+
 .titleAndNote {
   display: flex;
   justify-content: space-between;
@@ -231,4 +258,13 @@ img {
 .genreTags {
   display: flex;
   justify-content: space-between;
+}
+
+.storeBody a {
+  color: white;
+  text-decoration: underline;
+  text-decoration-color: rgb(210, 10, 50);
+}
+.storeBody a:hover {
+  background-color: rgb(207, 73, 100);
 }

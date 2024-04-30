@@ -1,7 +1,8 @@
-$bigTitleFontSize: 4rem;
+$bigTitleFontSize: 3rem;
 $smallTitleFontSize : 1.5rem;
 $textColor: white;
 $primaryColor: rgb(210, 10, 50);
+$hoverColor: rgb(207, 73, 100);
 
 @mixin platform-logo{
   width: 24px;
@@ -41,13 +42,20 @@ $primaryColor: rgb(210, 10, 50);
 }
 
 body{
-  background-color: black;
+  background-color: rgb(19, 19, 19);
   color: $textColor;
 }
 
 .container{
   width:80vw;
   margin: 0 auto;
+}
+
+.redTitle{
+  color: $primaryColor;
+  font-size: $bigTitleFontSize;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 /* navbar */
@@ -58,8 +66,11 @@ header{
 
 h1{
   font-size: $bigTitleFontSize;
-  color: $primaryColor;
+  color: $textColor;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
+
 
 form{
   align-self: center;  
@@ -76,7 +87,7 @@ form{
   display: flex;
 
   &:focus-within {
-    border-color: red;
+    border-color: $hoverColor;
   }
 }
 .searchIcon{
@@ -90,7 +101,7 @@ form{
   border: none;
   align-self: center;
   color: $textColor;
-  background-color: black;
+  background-color: rgb(19, 19, 19);
   &:focus {
     outline: none;
   }
@@ -168,7 +179,7 @@ img{
   font-size: $smallTitleFontSize;
   padding: 0.5rem 2rem;
   &:hover{
-    background-color: rgb(207, 73, 100);
+    background-color: $hoverColor;
     cursor: pointer;
   }
 }
@@ -177,6 +188,23 @@ img{
 
 
 /*details page*/
+.webSite {
+  display: inline-block;
+  padding: 10px 20px;
+  color: $textColor;
+  background-color: $primaryColor;
+  border: none;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  font-size: 16px;
+  position: relative;
+  top: -4rem;
+  left: 1rem;
+  &:hover{
+    background-color: $hoverColor;
+  }
+}
 .titleAndNote{
   display:flex;
   justify-content: space-between;
@@ -194,4 +222,15 @@ img{
 .genreTags{
   display: flex;
   justify-content: space-between;
+}
+.storeBody a{
+  
+  color: $textColor;
+  text-decoration: underline;
+  text-decoration-color: $primaryColor;
+
+  &:hover{
+    background-color: $hoverColor;
+  }
+  
 }
