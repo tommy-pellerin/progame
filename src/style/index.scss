@@ -122,6 +122,15 @@ form{
 .poster{
   height: 15rem;
   width: auto;
+  object-fit: cover;
+}
+.no_image{
+  width: 100%;
+  height: 100%;
+  background-image: url('../assets/images/no_image.png');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
 }
 img{
   width: 100%;
