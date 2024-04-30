@@ -146,19 +146,31 @@ form {
 }
 
 .articles {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+  gap: 1rem;
 }
 
 .cardGame {
-  flex: 20rem;
   background-color: rgb(35, 35, 35);
   width: 20rem;
   border-radius: 2%;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  margin: 1rem;
   overflow: hidden;
+  transition: transform 0.3s ease;
+}
+.cardGame .moreInfo {
+  display: none;
+}
+.cardGame:hover {
+  transform: scale(1.05);
+  position: absolute;
+}
+.cardGame:hover .moreInfo {
+  display: block;
+}
+.cardGame:hover .cardGame {
+  position: absolute;
 }
 
 .poster {
@@ -199,7 +211,13 @@ img {
 }
 
 .moreInfo {
-  display: none;
+  padding: 0;
+}
+
+.moreInfoContent {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
 }
 
 /* Show more button */

@@ -99,7 +99,15 @@ module.exports = (env) => {
             },
           ],
         },
-        
+        //installe pour lire les image dans le fichier html, install avec pnpm add --save-dev html-loader
+        {
+          test: /\.html$/,
+          use: [
+            {
+              loader: "html-loader",
+            },
+          ],
+        },
 
 
       ],

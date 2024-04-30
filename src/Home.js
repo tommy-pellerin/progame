@@ -31,16 +31,20 @@ const Home = (argument = '') => {
                 ${platformSlugs}
               </div>
               <ul class="moreInfo">
-                <li>
+                <li class="moreInfoContent">
                   <p>${article.rating} / 5</p>
                   <p>Nombre de vote : ${article.ratings_count}</p>
                 </li>
-                <li>
-                  <h3>${article.released}</h3>
+                <hr>
+                <li class="moreInfoContent">
+                  <p>Released date :</p>
+                  <p>${article.released}</p>
                 </li>
-                <li>
-                </li>
+                <hr>
+                <li class="moreInfoContent">
+                  <p>Genres :</p>
                   <p>${genres}</p>
+                </li>
               </ul>     
               
               
@@ -103,7 +107,7 @@ const Home = (argument = '') => {
   const render = () => {
     welcome.innerHTML = `
     <h2>Welcome,</h2>
-    <p>I'm learning to code an Single Web Page using javascript, API, SASS and webpack</p>
+    <p>I'm learning to code a Single Web Page using javascript, API, SASS and webpack</p>
     `;
     pageContent.innerHTML = `
       <section class="page-list">
