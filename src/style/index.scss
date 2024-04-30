@@ -30,11 +30,11 @@ $hoverColor: rgb(207, 73, 100);
 }
 .platformmac{
   @include platform-logo;
-  background-image: url('../assets/images/logos/mobile.svg');
+  background-image: url('../assets/images/logos/apple.svg');
 }
 .platformandroid{
   @include platform-logo;
-  background-image: url('../assets/images/logos/mobile.svg');
+  background-image: url('../assets/images/logos/android.svg');
 }
 .platformnintendo{
   @include platform-logo;
@@ -52,6 +52,7 @@ body{
 }
 
 .redTitle{
+  text-decoration: none;
   color: $primaryColor;
   font-size: $bigTitleFontSize;
   margin-top: 1rem;
@@ -223,7 +224,7 @@ img{
   display: flex;
   justify-content: space-between;
 }
-a, a:visited {
+.page-detail a, .page-detail a:visited {
 	text-decoration: none;
 	position: relative;
 	color: $textColor;

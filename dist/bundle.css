@@ -43,7 +43,7 @@
   background-repeat: no-repeat;
   object-fit: cover;
   margin: 10px;
-  background-image: url(1aa15eb6e63595f0c01e.svg);
+  background-image: url(a6a12c0c0513369a5d00.svg);
 }
 
 .platformandroid {
@@ -52,7 +52,7 @@
   background-repeat: no-repeat;
   object-fit: cover;
   margin: 10px;
-  background-image: url(1aa15eb6e63595f0c01e.svg);
+  background-image: url(0319f7472bdb9affd403.svg);
 }
 
 .platformnintendo {
@@ -75,6 +75,7 @@ body {
 }
 
 .redTitle {
+  text-decoration: none;
   color: rgb(210, 10, 50);
   font-size: 3rem;
   margin-top: 1rem;
@@ -260,12 +261,12 @@ img {
   justify-content: space-between;
 }
 
-a, a:visited {
+.page-detail a, .page-detail a:visited {
   text-decoration: none;
   position: relative;
   color: white;
 }
-a:after, a:visited:after {
+.page-detail a:after, .page-detail a:visited:after {
   content: "";
   height: 3px;
   position: absolute;
@@ -275,14 +276,14 @@ a:after, a:visited:after {
   background: rgb(210, 10, 50);
   transition: 0.2s;
 }
-a:hover:after, a:visited:hover:after {
+.page-detail a:hover:after, .page-detail a:visited:hover:after {
   width: 100%;
 }
-a.block, a:visited.block {
+.page-detail a.block, .page-detail a:visited.block {
   display: block;
   padding: 0.5em;
 }
-a.block:hover, a:visited.block:hover {
+.page-detail a.block:hover, .page-detail a:visited.block:hover {
   background: white;
 }
 

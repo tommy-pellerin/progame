@@ -40,8 +40,8 @@ window.onload = function() {
       if (keyWordsValue){
         console.log(keyWordsValue);
         // Change the URL to call routes.js and then show search results
-        console.log(`#pagelist/${keyWordsValue}`);
-        window.location.hash = `#pagelist/${keyWordsValue}`;
+        console.log(`#pagelist/search=${keyWordsValue}`);
+        window.location.hash = `#pagelist/search=${keyWordsValue}`;
       };
     });
   } else {

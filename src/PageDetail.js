@@ -2,6 +2,7 @@ const PageDetail = (argument) => {
   console.log('Page Detail', argument);
   const preparePage = () => {
     const cleanedArgument = argument.trim().replace(/\s+/g, "-");
+    document.getElementById('showMore').style.display = "none";
 
     const displayGame = (gameData) => {
       welcome.innerHTML = ''; //delete welcom content
@@ -36,19 +37,19 @@ const PageDetail = (argument) => {
 
       articleDOM.querySelector("p.release-date span").innerHTML = released;
 
-      const platformLinks = platforms.map(platform => `<a href="#${platform.platform.name}">${platform.platform.name}</a>`);
+      const platformLinks = platforms.map(platform => `<a href="#pagelist/platforms=${platform.platform.id}">${platform.platform.name}</a>`);
       articleDOM.querySelector("div.platforms").innerHTML += platformLinks.join(", ");
       
-      const developersLinks = developers.map((developer) => `<a href="#${developer.name}">${developer.name}</a>`);
+      const developersLinks = developers.map((developer) => `<a href="#pagelist/developers=${developer.slug}">${developer.name}</a>`);
       articleDOM.querySelector("div.developer").innerHTML += developersLinks.join(", ");
       
-      const genreLinks = genres.map((genre) => `<a href="#${genre.name}">${genre.name}</a>`);
+      const genreLinks = genres.map((genre) => `<a href="#pagelist/genres=${genre.slug}">${genre.name}</a>`);
       articleDOM.querySelector("div.genre").innerHTML += genreLinks.join(", ");
 
-      const tagLinks = tags.map((tag) => `<a href="#${tag.name}">${tag.name}</a>`);
+      const tagLinks = tags.map((tag) => `<a href="#pagelist/tags=${tag.slug}">${tag.name}</a>`);
       articleDOM.querySelector("div.tags").innerHTML += tagLinks.join(", ");
 
-      const publisherLinks = publishers.map((publisher) => `<a href="#${publisher.name}">${publisher.name}</a>`);
+      const publisherLinks = publishers.map((publisher) => `<a href="#pagelist/publisher=${publisher.slug}">${publisher.name}</a>`);
       articleDOM.querySelector("div.publisher span").innerHTML += publisherLinks.join(", ");
 
       const storesParagraph = articleDOM.querySelector("div.storeBody");
