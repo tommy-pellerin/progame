@@ -223,14 +223,39 @@ img{
   display: flex;
   justify-content: space-between;
 }
+a, a:visited {
+	text-decoration: none;
+	position: relative;
+	color: $textColor;
+	
+	&:after {
+		content: '';
+		height: 3px;
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 0%;
+		background: $primaryColor;
+		transition: 0.2s;
+	}
+
+	&:hover:after {
+		width: 100%;
+	}
+	
+	&.block {
+		display: block;
+		padding: 0.5em;
+		
+		&:hover {
+			background: $textColor;
+		}
+	}
+}
 .storeBody a{
-  
-  color: $textColor;
   text-decoration: underline;
   text-decoration-color: $primaryColor;
-
-  &:hover{
-    background-color: $hoverColor;
-  }
-  
+}
+.littleTitle{
+  font-weight: bold;
 }

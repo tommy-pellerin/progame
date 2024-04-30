@@ -260,11 +260,37 @@ img {
   justify-content: space-between;
 }
 
-.storeBody a {
+a, a:visited {
+  text-decoration: none;
+  position: relative;
   color: white;
+}
+a:after, a:visited:after {
+  content: "";
+  height: 3px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  background: rgb(210, 10, 50);
+  transition: 0.2s;
+}
+a:hover:after, a:visited:hover:after {
+  width: 100%;
+}
+a.block, a:visited.block {
+  display: block;
+  padding: 0.5em;
+}
+a.block:hover, a:visited.block:hover {
+  background: white;
+}
+
+.storeBody a {
   text-decoration: underline;
   text-decoration-color: rgb(210, 10, 50);
 }
-.storeBody a:hover {
-  background-color: rgb(207, 73, 100);
+
+.littleTitle {
+  font-weight: bold;
 }
