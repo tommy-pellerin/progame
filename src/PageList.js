@@ -14,6 +14,7 @@ const PageList = (argument = '') => {
     };
 
     const displayResults = (articles, nextPageURL) => {
+      welcome.innerHTML = '';//delete welcom content
       console.log(articles);
       const resultsContent = articles.map((article) => {
         const platformSlugs = article.parent_platforms.map((platform) => `<div class="platform${platform.platform.slug}"></div>`).join(' ');

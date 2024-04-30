@@ -101,6 +101,10 @@ const Home = (argument = '') => {
   };
 
   const render = () => {
+    welcome.innerHTML = `
+    <h2>Welcome,</h2>
+    <p>I'm learning to code an Single Web Page using javascript, API, SASS and webpack</p>
+    `;
     pageContent.innerHTML = `
       <section class="page-list">
         <p id="loading">Loading...</p>

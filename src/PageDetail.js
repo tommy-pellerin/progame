@@ -4,13 +4,35 @@ const PageDetail = (argument) => {
     const cleanedArgument = argument.trim().replace(/\s+/g, "-");
 
     const displayGame = (gameData) => {
-      const { name, released, description, background_image, website, rating, parent_platforms, stores, developers, genres, tags, publishers,  } = gameData;
+      welcome.innerHTML = ''; //delete welcom content
+
+      const { name, released, description, background_image, website, rating, parent_platforms, stores, developers, genres, tags, publishers, } = gameData;
       const articleDOM = document.querySelector(".page-detail .article");
-      articleDOM.querySelector("p.averageNote").innerHTML = rating;
+      if (background_image) {
+        // Create a new img element
+        let img = document.createElement('img');
+        img.src = background_image;
+
+        // Append the img element to the div
+        let div = document.querySelector('div.principalImage');
+        div.appendChild(img);
+      } else {
+        // Create a new div element
+        let divElement = document.createElement('div');
+        // Add a class to the div to match the css class
+        divElement.classList.add('no_image');
+
+        // Append the div element to the div
+        let div = document.querySelector('div.principalImage');
+        div.appendChild(divElement);
+      };
 
       articleDOM.querySelector("h1.title").innerHTML = name;
-      articleDOM.querySelector("div.principalImage img").setAttribute('src', background_image);
-      articleDOM.querySelector("p.description").innerHTML = description;
+      articleDOM.querySelector("p.averageNote span").innerHTML = rating;
+      // articleDOM.querySelector("p.numberOfNote span").innerHTML = ratings_count;
+      
+      articleDOM.querySelector("p.description").innerHTML += description;
+
       articleDOM.querySelector("p.release-date span").innerHTML = released;
 
       articleDOM.querySelector("p.webSite span").innerHTML = website;
@@ -61,21 +83,29 @@ const PageDetail = (argument) => {
     pageContent.innerHTML = `
       <section class="page-detail">
         <div class="article">
-          <p class="averageNote"></p>
-          <p class="numberOfNote"></p>
-
-          <h1 class="title"></h1>
-          <div class="principalImage">
-            <img src="" alt="poster" />
+          <div class="principalImage"></div>
+          <div class="titleAndNote">
+            <h1 class="title"></h1>
+            <div class="notes">
+              <p class="averageNote"><span></span>/5</p>
+              <p class="numberOfNote"><span></span> - votes</p>
+            </div>
           </div>
-          <p class="description"></p>
-          <p class="release-date">Release date : <span></span></p>
-          <p class="developer">Developer : <span></span></p>
-          <p class="tags">Tags : <span></span></p>
-          <p class="genre">Genre : <span></span></p>
-          <p class="publisher">Publisher : <span></span></p>
-          <p class="platforms">Platforms : <span></span></p>
-          <p class="webSite">Website : <span></span></p>
+          
+          <p class="description">Plot </br></p>
+          <div class="dateDevPlatformPublisher">
+            <p class="release-date">Release date : </br><span></span></p>
+            <p class="developer">Developer : </br><span></span></p>
+            <p class="platforms">Platforms : </br><span></span></p>
+            <p class="publisher">Publisher : </br><span></span></p>
+          </div>
+          <div class="genreTags">
+            <p class="genre">Genre : </br><span></span></p>
+            <p class="tags">Tags : </br><span></span></p>
+          </div>
+          
+          <p class="webSite">Website : </br><span></span></p>
+
           <div class="stores">
             <h3>BUY</h3>
             <div class="storeBody"></div>

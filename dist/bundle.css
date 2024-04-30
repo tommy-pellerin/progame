@@ -209,3 +209,26 @@ img {
   background-color: rgb(207, 73, 100);
   cursor: pointer;
 }
+
+/*details page*/
+.titleAndNote {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.notes {
+  display: flex;
+  color: rgb(210, 10, 50);
+  font-weight: bold;
+}
+
+.dateDevPlatformPublisher {
+  display: flex;
+  justify-content: space-between;
+}
+
+.genreTags {
+  display: flex;
+  justify-content: space-between;
+}
