@@ -82,7 +82,17 @@ body {
   margin-bottom: 1rem;
 }
 
-/* navbar */
+/* header */
+#loading-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 4px;
+  background: #29d;
+  transition: width 0.2s ease-in-out;
+}
+
 header {
   display: flex;
   justify-content: space-between;

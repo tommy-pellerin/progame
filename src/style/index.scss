@@ -61,13 +61,11 @@ body{
   background-color: rgb(19, 19, 19);
   color: $textColor;
 }
-
 .container{
   width:80vw;
   margin: 0 auto;
   
 }
-
 .redTitle{
   text-decoration: none;
   color: $primaryColor;
@@ -75,7 +73,16 @@ body{
   @include marginY
 }
 
-/* navbar */
+/* header */
+#loading-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 4px;
+  background: #29d;
+  transition: width 0.2s ease-in-out;
+}
 header{
   display:flex;
   justify-content: space-between;

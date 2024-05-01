@@ -11,6 +11,8 @@ const callRoute = () => {
   const pageFunction = routes[pageName];
 
   if (pageFunction !== undefined) {
+    // Call showLoadingBar on initial page load
+    showLoadingBar();
     pageFunction(pageArgument);
   }
 };
@@ -48,3 +50,25 @@ window.onload = function() {
     console.error('Form or keywords field not found');
   }
 }
+
+
+//Transition
+// Function to show the loading bar
+function showLoadingBar() {
+  console.log("loadingbar");
+  // Start loading
+  document.getElementById('loading-bar').style.width = '50%';
+
+  // Finish loading
+  document.getElementById('loading-bar').style.width = '100%';
+
+  // Hide the loading bar after a delay to show the completed state
+  setTimeout(() => {
+    
+    document.getElementById('loading-bar').style.width = '0';
+  }, 500);
+}
+
+// Call showLoadingBar whenever you navigate to a new page
+window.onhashchange = showLoadingBar;
+

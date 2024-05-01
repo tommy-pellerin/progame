@@ -67,7 +67,7 @@ const PageDetail = (argument) => {
     };
 
     const displayScreenshots = (screenShotsData) => {
-      console.log(screenShotsData);
+      // console.log(screenShotsData);
       const {results} = screenShotsData;      
       const screens = results.map(result => `<div class="shot"><img src="${result.image}" alt="${result.id}"></img></div>`)
       document.getElementById("screenShotsBox").innerHTML += screens.join("");
