@@ -129,6 +129,7 @@ form{
   // flex: 20rem;
   background-color: rgb(35, 35, 35);
   width: 20rem;
+  height: 23rem;
   border-radius: 2%;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   // margin: 1rem;
@@ -141,12 +142,10 @@ form{
 
   &:hover {
     transform: scale(1.05);
-    position:absolute;
+    position:relative;
+    height: auto;
     .moreInfo {
       display: block;
-    }
-    .cardGame { // This is new
-      position: absolute;
     }
   }
 }
