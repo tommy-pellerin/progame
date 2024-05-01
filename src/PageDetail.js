@@ -5,8 +5,8 @@ const PageDetail = (argument) => {
     const showMorBox = document.getElementsByClassName("showMoreBox")[0];
     showMorBox.style.display = "none";
     const displayGame = (gameData) => {
-      
-      const { name, released, description, background_image, website, rating, platforms, stores, developers, genres, tags, publishers, ratings_count} = gameData;
+      // console.log(gameData);
+      const { name, slug, released, description, background_image, website, rating, platforms, stores, developers, genres, tags, publishers, ratings_count} = gameData;
       const articleDOM = document.querySelector(".page-detail .article");
       if (background_image) {
         // Create a new img element
@@ -66,12 +66,26 @@ const PageDetail = (argument) => {
 
     };
 
-    const fetchGame = (url, argument) => {
+    const displayScreenshots = (screenShotsData) => {
+      console.log(screenShotsData);
+      const {results} = screenShotsData;      
+      const screens = results.map(result => `<div class="shot"><img src="${result.image}" alt="${result.id}"></img></div>`)
+      document.getElementById("screenShotsBox").innerHTML += screens.join("");
+      
+    }
+
+    const fetchGame = (url, argument, type = 'game') => {
       fetch(`${url}/${argument}?key=${process.env.API_KEY}`)
       // fetch(`detail.json`)
         .then((response) => response.json())
         .then((responseData) => {
-          displayGame(responseData);
+          if (type === 'game') {
+            displayGame(responseData);
+            // Fetch screenshots after displaying game
+            fetchGame(`${url}/${argument}`, 'screenshots', 'screenshots');
+          } else if (type === 'screenshots') {
+            displayScreenshots(responseData);
+          }
         });
     };
 
@@ -132,6 +146,7 @@ const PageDetail = (argument) => {
           </div>
           <div class="screenShots">
             <p class="redTitle">SCREENSHOTS</p>
+            <div class="screenShotsBox" id="screenShotsBox"></div>
           </div>
           <div class="video">
             <p class="redTitle">SIMILAR GAMES</p>
