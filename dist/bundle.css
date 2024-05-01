@@ -87,6 +87,11 @@ header {
   display: flex;
   justify-content: space-between;
 }
+@media only screen and (max-width: 600px) {
+  header {
+    flex-direction: column;
+  }
+}
 
 h1 {
   font-size: 3rem;
@@ -97,11 +102,12 @@ h1 {
 
 form {
   align-self: center;
+  width: 100%;
+  max-width: 20rem;
 }
 
 /* searching */
 .searchBox {
-  width: 20rem;
   height: 2.5rem;
   border: 2px solid white;
   border-radius: 5rem;
@@ -141,14 +147,26 @@ form {
 
 /* game card styles */
 #pageContent {
-  margin-top: 2rem;
-  margin-bottom: 2rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 .articles {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
+  justify-content: center;
+  place-items: center;
+}
+@media only screen and (max-width: 992px) {
+  .articles {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media only screen and (max-width: 600px) {
+  .articles {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
 
 .cardGame {
@@ -261,6 +279,11 @@ img {
   justify-content: space-between;
   align-items: center;
 }
+@media only screen and (max-width: 600px) {
+  .titleAndNote {
+    flex-direction: column;
+  }
+}
 
 .notes {
   display: flex;
@@ -271,11 +294,22 @@ img {
 .dateDevPlatformPublisher {
   display: flex;
   justify-content: space-between;
+  gap: 10px;
+}
+@media only screen and (max-width: 600px) {
+  .dateDevPlatformPublisher {
+    flex-direction: column;
+  }
 }
 
 .genreTags {
   display: flex;
-  justify-content: space-between;
+  gap: 10px;
+}
+@media only screen and (max-width: 600px) {
+  .genreTags {
+    flex-direction: column;
+  }
 }
 
 .page-detail a, .page-detail a:visited {
@@ -304,11 +338,27 @@ img {
   background: white;
 }
 
-.storeBody a {
+#storeBody a {
   text-decoration: underline;
   text-decoration-color: rgb(210, 10, 50);
+}
+#storeBody a:after {
+  content: "";
+  height: 1rem;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  background: rgb(207, 73, 100);
+  opacity: 40%;
+  transition: 0.2s;
+}
+#storeBody a:hover:after {
+  width: 100%;
 }
 
 .littleTitle {
   font-weight: bold;
+  text-decoration: underline;
+  margin-bottom: 2px;
 }

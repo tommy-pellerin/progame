@@ -87,7 +87,7 @@ const PageList = (argument = '') => {
       let today = `${currentYear}-${month}-${day}`;
       let limitYear = currentYear + 1;
       
-      const finalURL = argument ? `${url}&${argument}&page=${page}&page_size=9&ordering=-released` : `${url}&dates=${today},${limitYear}-12-31&page=${page}&page_size=9`;
+      const finalURL = argument ? `${url}&${argument}&page=${page}&page_size=9` : `${url}&dates=${today},${limitYear}-12-31&page=${page}&page_size=9`;
       console.log(`final URL: ${finalURL}`);
       fetch(finalURL)
         .then((response) => response.json())

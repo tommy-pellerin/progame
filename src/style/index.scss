@@ -4,13 +4,29 @@ $textColor: white;
 $primaryColor: rgb(210, 10, 50);
 $hoverColor: rgb(207, 73, 100);
 
+@mixin marginX{
+  margin-left: 5px;
+  margin-right: 5px;
+};
+@mixin marginY {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+};
 @mixin platform-logo{
   width: 24px;
   height: 20px;
   background-repeat: no-repeat;
   object-fit: cover;
   margin: 10px;
-}
+};
+$laptops-width : 992px;
+$tablets-width : 600px;
+$mobile-width : 600px;
+@mixin mobile {
+  @media only screen and (max-width: $mobile-width) {
+    flex-direction: column;
+  }
+};
 
 .platformplaystation{
   @include platform-logo;
@@ -49,39 +65,40 @@ body{
 .container{
   width:80vw;
   margin: 0 auto;
+  
 }
 
 .redTitle{
   text-decoration: none;
   color: $primaryColor;
   font-size: $bigTitleFontSize;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+  @include marginY
 }
 
 /* navbar */
 header{
   display:flex;
   justify-content: space-between;
+  @include mobile
 }
 
 h1{
   font-size: $bigTitleFontSize;
   color: $textColor;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+  @include marginY
 }
 
-
 form{
-  align-self: center;  
+  align-self: center;
+  width: 100%;
+  max-width: 20rem;
 }
 
 /* searching */
 .searchBox{
-  width: 20rem;
+  
   height: 2.5rem;
-  border: 2px solid white;
+  border: 2px solid white;  
   border-radius: 5rem;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
@@ -114,25 +131,27 @@ form{
 
 /* game card styles */
 #pageContent{
-  margin-top: 2rem;
-  margin-bottom: 2rem;
+  @include marginY
 }
 .articles{
-  // display:flex;
-  // flex-wrap: wrap;
-  // justify-content: space-around;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
+  justify-content: center;
+  place-items: center;
+  @media only screen and (max-width: $laptops-width) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media only screen and (max-width: $tablets-width) {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
 .cardGame{
-  // flex: 20rem;
   background-color: rgb(35, 35, 35);
   width: 20rem;
   height: 23rem;
   border-radius: 2%;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  // margin: 1rem;
   overflow: hidden;
   transition: transform 0.3s ease;
   
@@ -233,6 +252,7 @@ img{
   display:flex;
   justify-content: space-between;
   align-items: center;
+  @include mobile
 }
 .notes{
   display: flex;
@@ -242,11 +262,16 @@ img{
 .dateDevPlatformPublisher{
   display: flex;
   justify-content: space-between;
+  gap: 10px;
+  @include mobile;
 }
 .genreTags{
   display: flex;
-  justify-content: space-between;
+  // justify-content: space-between;
+  gap: 10px;
+  @include mobile;
 }
+
 .page-detail a, .page-detail a:visited {
 	text-decoration: none;
 	position: relative;
@@ -276,10 +301,27 @@ img{
 		}
 	}
 }
-.storeBody a{
+#storeBody a{
   text-decoration: underline;
   text-decoration-color: $primaryColor;
+  // transition: background-color 0.3s ease; // Add transition effect
+  &:after {
+		content: '';
+		height: 1rem;
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 0%;
+		background: $hoverColor;
+    opacity: 40%;
+		transition: 0.2s;
+	}
+  &:hover:after {
+		width: 100%;
+	}
 }
 .littleTitle{
   font-weight: bold;
+  text-decoration: underline;
+  margin-bottom: 2px;
 }

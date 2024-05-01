@@ -2,11 +2,10 @@ const PageDetail = (argument) => {
   console.log('Page Detail', argument);
   const preparePage = () => {
     const cleanedArgument = argument.trim().replace(/\s+/g, "-");
-    document.getElementById('showMore').style.display = "none";
-
+    const showMorBox = document.getElementsByClassName("showMoreBox")[0];
+    showMorBox.style.display = "none";
     const displayGame = (gameData) => {
-      welcome.innerHTML = ''; //delete welcom content
-
+      
       const { name, released, description, background_image, website, rating, platforms, stores, developers, genres, tags, publishers, ratings_count} = gameData;
       const articleDOM = document.querySelector(".page-detail .article");
       if (background_image) {
@@ -33,9 +32,9 @@ const PageDetail = (argument) => {
       articleDOM.querySelector("p.averageNote span").innerHTML = rating;
       articleDOM.querySelector("p.numberOfNote span").innerHTML = ratings_count;
       
-      articleDOM.querySelector("p.description").innerHTML += description;
+      articleDOM.querySelector("div.description").innerHTML += description;
 
-      articleDOM.querySelector("p.release-date span").innerHTML = released;
+      articleDOM.querySelector("div.release-date").innerHTML += released;
 
       const platformLinks = platforms.map(platform => `<a href="#pagelist/platforms=${platform.platform.id}">${platform.platform.name}</a>`);
       articleDOM.querySelector("div.platforms").innerHTML += platformLinks.join(", ");
@@ -48,9 +47,9 @@ const PageDetail = (argument) => {
 
       const tagLinks = tags.map((tag) => `<a href="#pagelist/tags=${tag.slug}">${tag.name}</a>`);
       articleDOM.querySelector("div.tags").innerHTML += tagLinks.join(", ");
-
+      
       const publisherLinks = publishers.map((publisher) => `<a href="#pagelist/publisher=${publisher.slug}">${publisher.name}</a>`);
-      articleDOM.querySelector("div.publisher span").innerHTML += publisherLinks.join(", ");
+      articleDOM.querySelector("div.publisher").innerHTML += publisherLinks.join(", ");
 
       const storesParagraph = articleDOM.querySelector("div.storeBody");
       storesParagraph.innerHTML = ''; // Clear the paragraph
@@ -94,32 +93,38 @@ const PageDetail = (argument) => {
             </div>
           </div>
           
-          <p class="description"><strong>Plot</strong> </br></p>
+          <div class="description">
+            <p class="littleTitle">Plot</p>
+          </div>
+          
           <div class="dateDevPlatformPublisher">
-            <p class="release-date"><strong>Release date</strong> </br><span></span></p>
+            <div class="release-date">
+              <p class="littleTitle">Release date</p>
+            </div>
+            
             <div class="developer">
-              <p>Developer</p>
+              <p class="littleTitle">Developer</p>
             </div>
             <div class="platforms">
-            <p>Platforms</p>
+            <p class="littleTitle">Platforms</p>
             </div>
             <div class="publisher">
-            <p>Publisher</p>
+            <p class="littleTitle">Publisher</p>
             </div>
           </div>
           <div class="genreTags">
             <div class="genre">
-            <p>Genre</p>
+              <p class="littleTitle">Genre</p>
             </div>
             <div class="tags">
-            <p>Tags</p>
+              <p class="littleTitle">Tags</p>
             </div>
           </div>
           
 
           <div class="stores">
             <p class="redTitle">BUY</p>
-            <div class="storeBody"></div>
+            <div class="storeBody" id="storeBody"></div>
           </div>
           <div class="video">
             <p class="redTitle">TRAILER</p>
