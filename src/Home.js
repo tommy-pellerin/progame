@@ -16,14 +16,14 @@ const Home = (argument = '') => {
     // Function to fetch more results when click on "show more"
     function fetchMoreResults() {
       
-      console.log("click home");
+      // console.log("click home");
       fetchList(`https://api.rawg.io/api/games?key=${process.env.API_KEY}`, cleanedArgument, currentPage);
     }
 
     //display the fetching result in the DOM
     const displayResults = (articles, nextPageURL) => {
       
-      console.log(articles);
+      // console.log(articles);
       //iterate all article
       const resultsContent = articles.map((article) => {
         //recuperate parent platforms slug of each articles
@@ -38,7 +38,7 @@ const Home = (argument = '') => {
             ${image}
           </div>
             <div class="cardBody">
-              <a class="smallTitle" href="#pagedetail/${article.id}">${article.name}</a>
+              <a class="smallTitle" href="#pagedetail/${article.slug}">${article.name}</a>
               
               <div class="platform">
                 ${platformSlugs}
@@ -88,8 +88,8 @@ const Home = (argument = '') => {
 
     //fonction to fetch data with API
     const fetchList = (url, argument, page) => {
-      console.log(`la page actuelle: ${page}`);
-      console.log(`argument actuel ${argument}`);
+      // console.log(`la page actuelle: ${page}`);
+      // console.log(`argument actuel ${argument}`);
       let date = new Date();
       let currentYear = date.getFullYear();
       let month = (date.getMonth() + 1).toString().padStart(2, '0');
@@ -97,8 +97,8 @@ const Home = (argument = '') => {
       let today = `${currentYear}-${month}-${day}`;
       let limitYear = currentYear + 1;
       
-      const finalURL = argument ? `${url}&search=${argument}&page=${page}&page_size=9&ordering=-released` : `${url}&dates=${today},${limitYear}-12-31&page=${page}&page_size=9`;
-      console.log(`final URL: ${finalURL}`);
+      const finalURL = argument ? `${url}&search=${argument}&page=${page}&page_size=9` : `${url}&dates=${currentYear},${limitYear}-12-31&page=${page}&page_size=9`;
+      // console.log(`final URL: ${finalURL}`);
       fetch(finalURL)
         .then((response) => response.json())
         .then((responseData) => {
@@ -111,9 +111,9 @@ const Home = (argument = '') => {
           // Check to hide the "Show more" button after new results have been fetched
           if (!responseData.next || currentPage > 3) {
             
-              console.log("3 page affiché");
+              // console.log("3 page affiché");
               currentPage = 1
-              console.log(`page actuelle apres avoir affiché 3 page: ${currentPage}`);
+              // console.log(`page actuelle apres avoir affiché 3 page: ${currentPage}`);
               storedData = null
           };
 
@@ -125,6 +125,95 @@ const Home = (argument = '') => {
 
     fetchList(`https://api.rawg.io/api/games?key=${process.env.API_KEY}`, cleanedArgument, currentPage);
   };//end of prepare page function
+  
+  //fonction filtre permettant d'afficher les résultats en fonction des platforms
+  const selectFilter = () => {
+    var x, i, j, l, ll, selElmnt, a, b, c;
+    /*look for any elements with the class "custom-select":*/
+    x = document.getElementsByClassName("custom-select");
+    l = x.length;
+    for (i = 0; i < l; i++) {
+      selElmnt = x[i].getElementsByTagName("select")[0];
+      ll = selElmnt.length;
+      /*for each element, create a new DIV that will act as the selected item:*/
+      a = document.createElement("DIV");
+      a.setAttribute("class", "select-selected");
+      a.innerHTML = selElmnt.options[selElmnt.selectedIndex].innerHTML;
+      x[i].appendChild(a);
+      /*for each element, create a new DIV that will contain the option list:*/
+      b = document.createElement("DIV");
+      b.setAttribute("class", "select-items select-hide");
+      for (j = 1; j < ll; j++) {
+        /*for each option in the original select element,
+        create a new DIV that will act as an option item:*/
+        c = document.createElement("DIV");
+        c.innerHTML = selElmnt.options[j].innerHTML;
+        c.addEventListener("click", function(e) {
+            /*when an item is clicked, update the original select box,
+            and the selected item:*/
+            var y, i, k, s, h, sl, yl;
+            s = this.parentNode.parentNode.getElementsByTagName("select")[0];
+            sl = s.length;
+            h = this.parentNode.previousSibling;
+            for (i = 0; i < sl; i++) {
+              if (s.options[i].innerHTML == this.innerHTML) {
+                s.selectedIndex = i;
+                h.innerHTML = this.innerHTML;
+                y = this.parentNode.getElementsByClassName("same-as-selected");
+                yl = y.length;
+                for (k = 0; k < yl; k++) {
+                  y[k].removeAttribute("class");
+                }
+                this.setAttribute("class", "same-as-selected");
+
+                // Get the value of the selected option
+                var selectedValue = s.options[i].value;
+
+                // Change the URL based on the selected value
+                window.location.hash = `#pagelist/platforms=${selectedValue}`;
+
+                break;
+              }
+            }
+            h.click();
+        });
+        b.appendChild(c);
+      }
+      x[i].appendChild(b);
+      a.addEventListener("click", function(e) {
+          /*when the select box is clicked, close any other select boxes,
+          and open/close the current select box:*/
+          e.stopPropagation();
+          closeAllSelect(this);
+          this.nextSibling.classList.toggle("select-hide");
+          this.classList.toggle("select-arrow-active");
+        });
+    }
+    function closeAllSelect(elmnt) {
+      /*a function that will close all select boxes in the document,
+      except the current select box:*/
+      var x, y, i, xl, yl, arrNo = [];
+      x = document.getElementsByClassName("select-items");
+      y = document.getElementsByClassName("select-selected");
+      xl = x.length;
+      yl = y.length;
+      for (i = 0; i < yl; i++) {
+        if (elmnt == y[i]) {
+          arrNo.push(i)
+        } else {
+          y[i].classList.remove("select-arrow-active");
+        }
+      }
+      for (i = 0; i < xl; i++) {
+        if (arrNo.indexOf(i)) {
+          x[i].classList.add("select-hide");
+        }
+      }
+    }
+    /*if the user clicks anywhere outside the select box,
+    then close all select boxes:*/
+    document.addEventListener("click", closeAllSelect);
+  };//end of selecfilter
 
   //fonction that is rendered at the begining, then it will call the rest
   const render = () => {
@@ -134,15 +223,29 @@ const Home = (argument = '') => {
     `;
     pageContent.innerHTML = `
       <section class="page-list">
+      <div class="custom-select" style="width:200px;">
+        <select>
+          <option value="0">Select platform:</option>
+          <option value="pc">PC</option>
+          <option value="playstation">PlayStation</option>
+          <option value="xbox">Xbox</option>
+          <option value="android">Android</option>
+          <option value="mac">MacOS</option>
+          <option value="linux">Linux</option>
+          <option value="nintendo">Nintendo</option>
+          <option value="">All</option>
+        </select>
+      </div>
         <p id="loading">Loading...</p>
         <div class="articles"></div>
       </section>
     `;
-
+    selectFilter();
     preparePage();
   };
 
   render();
+
 };
 
 export { Home };

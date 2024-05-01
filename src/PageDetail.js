@@ -128,10 +128,14 @@ const PageDetail = (argument) => {
           </div>
           <div class="video">
             <p class="redTitle">TRAILER</p>
-            <video src=""></video>
+            <p>Available only for business and enterprise API users</p>
           </div>
           <div class="screenShots">
             <p class="redTitle">SCREENSHOTS</p>
+          </div>
+          <div class="video">
+            <p class="redTitle">SIMILAR GAMES</p>
+            <p>Available only for business and enterprise API users</p>
           </div>
 
         </div>
